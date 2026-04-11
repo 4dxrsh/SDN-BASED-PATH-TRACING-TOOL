@@ -122,16 +122,38 @@ This confirms:
 
 ## 📸 Proof of Execution
 
-Include the following screenshots:
+screenshots:
 
 1. Controller running
-2. Network topology
+<img width="940" height="336" alt="image" src="https://github.com/user-attachments/assets/e4938ad6-7c0d-4179-a525-1e120ffbf646" />
+
+2. Cleanup And Network topology 
+<img width="940" height="329" alt="image" src="https://github.com/user-attachments/assets/0410685c-02d2-4096-8373-5df7bf7a5da9" />
+<img width="940" height="283" alt="image" src="https://github.com/user-attachments/assets/73272719-2bdf-477f-b281-ff1df9bdc19d" />
+
+
 3. Successful ping
+<img width="653" height="223" alt="image" src="https://github.com/user-attachments/assets/54f55ff7-258a-4f6c-9899-90fae398b334" />
+
 4. Path tracing logs
+<img width="940" height="765" alt="image" src="https://github.com/user-attachments/assets/d3286370-1be8-4e40-8879-bc68382554c5" />
+<img width="940" height="726" alt="image" src="https://github.com/user-attachments/assets/5604abee-f103-4bf8-95b2-e3225320cf62" />
+
+
 5. Latency output
+<img width="457" height="54" alt="image" src="https://github.com/user-attachments/assets/2f2daf6c-d8f9-453d-b047-ee70d8f4df51" />
+
 6. Throughput (iperf)
+<img width="822" height="153" alt="image" src="https://github.com/user-attachments/assets/65ad535b-acd7-4b58-91f3-41b6345ac931" />
+
 7. Flow table
+<img width="940" height="211" alt="image" src="https://github.com/user-attachments/assets/4bfbe76e-896f-4cf7-beef-316f65ab0e07" />
+
 8. Blocked traffic case
+<img width="817" height="342" alt="image" src="https://github.com/user-attachments/assets/d0adeefa-d7ce-482e-af02-f5e908f0acad" />
+<img width="940" height="222" alt="image" src="https://github.com/user-attachments/assets/a7aa0ea4-c472-4982-b82a-2b1b0d94f78c" />
+
+
 
 ---
 
@@ -162,7 +184,7 @@ This project demonstrates how SDN enables centralized control of network behavio
 
 ## 👨‍💻 Author
 
-Name: [Your Name]
+Name: Adarsh Rajesh
 Course: Computer Networks
 University: PES University
 
