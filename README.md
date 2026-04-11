@@ -1,73 +1,169 @@
-# POX
+# Path Tracing Tool using SDN (Mininet + POX)
 
-POX is a networking software platform written in Python.
+## 📌 Project Overview
 
-POX started life as an OpenFlow controller, but can now also function as an
-OpenFlow switch, and can be useful for writing networking software in
-general.  It currently supports OpenFlow 1.0 and includes special support
-for the Open vSwitch/Nicira extensions.
+This project implements a Software Defined Networking (SDN)-based path tracing tool using Mininet and the POX controller. The controller monitors packet flow in the network, logs the path taken by packets, and enforces simple policies such as blocking traffic from specific hosts.
 
-POX versions are named.  Starting with POX "gar", POX officially requires
-Python 3.  The last version with support for Python 2 was POX "fangtooth".
-POX should run under Linux, Mac OS, and Windows.  (And just about anywhere
-else -- we've run it on Android phones, under FreeBSD, Haiku, and elsewhere.
-All you need is Python!)  Some features are not available on all platforms.
-Linux is the most featureful.
+---
 
-This README contains some information to get you started, but is purposely
-brief.  For more information, please see the full documentation.
+## 🎯 Objectives
 
+* Simulate a network using Mininet
+* Implement a custom SDN controller using POX
+* Track and display packet paths
+* Apply flow rules using OpenFlow
+* Measure performance (latency & throughput)
+* Validate behavior using test cases
 
-## Running POX
+---
 
-`pox.py` boots up POX. It takes a list of component names on the command line,
-locates the components, calls their `launch()` function (if it exists), and
-then transitions to the "up" state.
+## 🛠️ Technologies Used
 
-If you run `./pox.py`, it will attempt to find an appropriate Python 3
-interpreter itself.  In particular, if there is a copy of PyPy in the main
-POX directory, it will use that (for a potentially large performance boost!).
-Otherwise it will look for things called `python3` and fall back to `python`.
-You can also, of course, invoke the desired Python interpreter manually
-(e.g., `python3 pox.py`).
+* Mininet (Network Emulator)
+* POX Controller (Python-based SDN controller)
+* OpenFlow Protocol (v1.0)
+* Ubuntu Linux (VM)
 
-The POX commandline optionally starts with POX's own options (see below).
-This is followed by the name of a POX component, which may be followed by
-options for that component.  This may be followed by further components
-and their options.
+---
 
-  ./pox.py [pox-options...] [component] [component-options...] ...
+## 🏗️ Network Topology
 
-### POX Options
+Simple topology with:
 
-While components' options are up to the component (see the component's
-documentation), as mentioned above, POX has some options of its own.
-Some useful ones are:
+* 2 Hosts: h1, h2
+* 1 Switch: s1
 
- | Option        | Meaning                                                   |
- | ------------- | --------------------------------------------------------- |
- |`--verbose`    | print stack traces for initialization exceptions          |
- |`--no-openflow`| don't start the openflow module automatically             |
+```
+h1 ---- s1 ---- h2
+```
 
+---
 
-## Components
+## ⚙️ Implementation Details
 
-POX components are basically Python modules with a few POX-specific
-conventions.  They are looked for everywhere that Python normally looks, plus
-the `pox` and `ext` directories.  Thus, you can do the following:
+### 1. Controller Logic
 
-  ./pox.py forwarding.l2_learning
+The controller performs:
 
-As mentioned above, you can pass options to the components by specifying
-options after the component name.  These are passed to the corresponding
-module's `launch()` funcion.  For example, if you want to run POX as an
-OpenFlow controller and control address or port it uses, you can pass those
-as options to the openflow._01 component:
+* MAC learning
+* Packet forwarding
+* Path tracing (logs packet movement)
+* Flow rule installation
+* Traffic blocking based on IP
 
-  ./pox.py openflow.of_01 --address=10.1.1.1 --port=6634
+### 2. Path Tracing
 
+Logs are generated for each packet:
 
-## Further Documentation
+```
+Packet at switch s1: <src_mac> -> <dst_mac>
+Path Trace: Host <src_mac> → s1
+```
 
-The full POX documentation is available on GitHub at
-https://noxrepo.github.io/pox-doc/html/
+### 3. Flow Rules
+
+Flow rules are installed using OpenFlow:
+
+* Matches packet fields
+* Defines forwarding action
+* Reduces controller load
+
+---
+
+## 🧪 Test Cases
+
+### ✅ Test Case 1: Normal Communication
+
+* Command: `h1 ping h2`
+* Result: Successful communication (0% packet loss)
+
+### ❌ Test Case 2: Blocked Traffic
+
+* Condition: Traffic from h1 (IP: 10.0.0.1) blocked
+* Result: No response (packets dropped)
+* Controller Log:
+
+```
+Blocked traffic from h1
+```
+
+---
+
+## 📊 Performance Analysis
+
+### 1. Latency
+
+Measured using ping:
+
+* Average latency observed: few milliseconds
+
+### 2. Throughput
+
+Measured using iperf:
+
+* Output in Mbps indicating bandwidth
+
+---
+
+## 📋 Flow Table Verification
+
+Flow entries observed using:
+
+```
+sudo ovs-ofctl dump-flows s1
+```
+
+This confirms:
+
+* OpenFlow rules are installed correctly
+* Switch forwards packets based on rules
+
+---
+
+## 📸 Proof of Execution
+
+Include the following screenshots:
+
+1. Controller running
+2. Network topology
+3. Successful ping
+4. Path tracing logs
+5. Latency output
+6. Throughput (iperf)
+7. Flow table
+8. Blocked traffic case
+
+---
+
+## 🧠 Key Concepts Used
+
+* Software Defined Networking (SDN)
+* Control Plane vs Data Plane
+* OpenFlow Protocol
+* Packet-In events
+* Flow table management
+
+---
+
+## 🚀 Conclusion
+
+This project demonstrates how SDN enables centralized control of network behavior. The controller successfully tracks packet paths, enforces policies, and manages flow rules dynamically.
+
+---
+
+## 📚 Future Improvements
+
+* Multi-switch topology support
+* GUI visualization of paths
+* Dynamic policy updates
+* Integration with Ryu controller
+
+---
+
+## 👨‍💻 Author
+
+Name: [Your Name]
+Course: Computer Networks
+University: PES University
+
+---
