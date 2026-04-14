@@ -14,16 +14,17 @@ def _handle_PacketIn(event):
     # 🔴 BLOCK h1 USING IP (FINAL FIX)
     ip_packet = packet.find('ipv4')
 
-    if ip_packet and ip_packet.srcip == "10.0.0.1":
-    	log.info("Blocked traffic from h1")
+#UNCOMMENT THIS BLOCK FOR THE BLOCKING VERSION
+    #if ip_packet and ip_packet.srcip == "10.0.0.1":
+    	#log.info("Blocked traffic from h1")
 
-    	msg = of.ofp_packet_out()
-    	msg.data = event.ofp
-    	msg.in_port = event.port
-    	msg.actions = []   # DROP
-    	event.connection.send(msg)
+    	#msg = of.ofp_packet_out()
+    	#msg.data = event.ofp
+    	#msg.in_port = event.port
+    	#msg.actions = []   # DROP
+    	#event.connection.send(msg)
 
-    	return
+    	#return
 
     # Normal learning switch logic
     if dpid not in mac_to_port:
