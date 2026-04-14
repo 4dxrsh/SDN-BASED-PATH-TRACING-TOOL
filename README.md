@@ -1,5 +1,12 @@
 # Path Tracing Tool using SDN (Mininet + POX)
 
+## 👨‍💻 Author
+
+Name: Adarsh Rajesh
+SRN: PES1UG24CS020
+Course: Computer Networks
+University: PES University
+
 ## 📌 Project Overview
 
 This project implements a Software Defined Networking (SDN)-based path tracing tool using Mininet and the POX controller. The controller monitors packet flow in the network, logs the path taken by packets, and enforces simple policies such as blocking traffic from specific hosts.
@@ -182,10 +189,6 @@ This project demonstrates how SDN enables centralized control of network behavio
 
 ---
 
-## 👨‍💻 Author
 
-Name: Adarsh Rajesh
-Course: Computer Networks
-University: PES University
 
 ---
