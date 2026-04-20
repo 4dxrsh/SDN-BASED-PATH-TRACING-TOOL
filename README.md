@@ -164,6 +164,10 @@ screenshots:
 <img width="940" height="222" alt="image" src="https://github.com/user-attachments/assets/a7aa0ea4-c472-4982-b82a-2b1b0d94f78c" />
 
 
+9. Wireshark Capture
+<img width="1654" height="602" alt="image" src="https://github.com/user-attachments/assets/2735b4bd-23c2-4403-943e-3b6514dccb24" />
+We can see the ARP protocol in work. Ping Request and Reply Packets.
+
 
 ---
 
